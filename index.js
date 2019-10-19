@@ -1,7 +1,18 @@
-function test(a, b, c) {     
+function testSpread(a, b, c) {    
     console.log(a + b + c);
 }
 
-let arr = [1,2,3];
+function testRest(...arr) {
+    let sum = 0;
 
-test(...arr);
+    arr.forEach(function(value) {
+        sum += value;
+    })
+
+    console.log(sum);
+}
+
+let arr = [1,2,3];
+testSpread(...arr);
+
+testRest(1,2,3,4,5);
