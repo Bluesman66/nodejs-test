@@ -12,7 +12,22 @@ function testRest(...arr) {
     console.log(sum);
 }
 
+function createCar(property, value) {
+    return {
+        [property]: value,
+        ['_' + property]: value,
+        [property.toUpperCase()]: value,
+        ['get' + property]() {
+            return this[property];
+        }
+    }
+}
+
 let arr = [1,2,3];
 testSpread(...arr);
 
 testRest(1,2,3,4,5);
+
+let car = createCar('vin', 1);
+console.log(car);
+console.log(car.getvin());
