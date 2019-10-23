@@ -1,38 +1,34 @@
-function* generate() {
-    console.log('Start');
-    yield 1;
-    yield 2;
-    yield 3;
-    console.log('Finish');
+function* range(start, end) {
+    let current = start;
+    while (current <= end) {
+        yield current++;
+    }
 }
 
-// function generate() {
-//     console.log('Start');
-//     let current = 1;
-//     return {
-//         [Symbol.iterator]() {
-//             return {
-//                 next() {
-//                     let result = { value: undefined, done: true };
+function range2(start, end) {
+    let current = start;    
+    return {
+        [Symbol.iterator]() {
+            return {
+                next() {
+                    let result = { value: undefined, done: true };
+                    if (current <= end) {
+                        result.value = current++;
+                        result.done = false;
+                    }
+                    return result;
+                }
+            }
+        }
+    }
+}
 
-//                     if (current <= 3) {
-//                         result.value = current;
-//                         result.done = false;
-//                         current++; 
-//                     }
-//                     else {
-//                         console.log('Finish');
-//                     }    
+console.log('range');
+for (const num of range(1, 10)) {
+    console.log(num);
+}
 
-//                     return result;
-//                 }
-//             }
-//         }
-//     }
-// }
-
-let iterator = generate()[Symbol.iterator]();
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
+console.log('range2');
+for (const num of range2(1, 5)) {
+    console.log(num);
+}
