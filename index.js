@@ -31,3 +31,22 @@ testRest(1,2,3,4,5);
 let car = createCar('vin', 1);
 console.log(car);
 console.log(car.getvin());
+
+let getPerson = () => ({ name: 'John' });
+
+console.log(getPerson());
+
+let symbol = Symbol('name');
+console.log(symbol);
+console.log(typeof symbol);
+
+let user = {
+    username: 'r2d2',
+    [Symbol.for('password')]: 'c3po',
+    [Symbol.iterator]: 'test'
+}
+
+console.log(Object.keys(user));
+console.log(Symbol.for('password'));
+console.log(Object.getOwnPropertySymbols(user));
+console.log(user[Symbol.iterator]);
