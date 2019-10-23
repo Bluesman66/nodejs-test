@@ -1,10 +1,37 @@
-let xmen = ['Cyclops', 'Wolverine', 'Rogue'];
+function* generate() {
+    console.log('Start');
+    yield 1;
+    yield 2;
+    yield 3;
+    console.log('Finish');
+}
 
-for (const value of xmen) {
-    console.log(value);
-} 
+// function generate() {
+//     console.log('Start');
+//     let current = 1;
+//     return {
+//         [Symbol.iterator]() {
+//             return {
+//                 next() {
+//                     let result = { value: undefined, done: true };
 
-let iterator = xmen[Symbol.iterator]();
+//                     if (current <= 3) {
+//                         result.value = current;
+//                         result.done = false;
+//                         current++; 
+//                     }
+//                     else {
+//                         console.log('Finish');
+//                     }    
+
+//                     return result;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+let iterator = generate()[Symbol.iterator]();
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
