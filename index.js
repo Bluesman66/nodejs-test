@@ -45,3 +45,13 @@ const ts = {
 for (let item in ts) {
 	console.log(`item: ${ts[item]}, type: ${typeof ts[item]}`);
 }
+
+function *generator() {
+    yield;
+    yield;
+}
+
+let iterator = generator();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
